@@ -1,6 +1,5 @@
 name: Main Workflow
-on: [workflow_dispatch,push,pull_request]
-  #
+on: [push, pull_request]
 jobs:
   call-reusable-workflow:
     uses: ugcity/reuseable-flows/.github/workflows/reuseable-flow.yml@main
