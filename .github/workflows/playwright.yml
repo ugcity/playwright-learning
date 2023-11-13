@@ -8,3 +8,4 @@ jobs:
       npm-install-command: 'ci'
       run-playwright: true
       upload-artifact: true
+    secrets: inherit
