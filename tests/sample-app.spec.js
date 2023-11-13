@@ -7,6 +7,8 @@ dotenv.config();
 let username = process.env.USERNAME;
 let password = process.env.PASSWORD;
 
+console.log(`USERNAME is ${username}, PASSWORD is ${password}`);
+
 test.describe.parallel("suite", () => {
   test("log in success", async ({ page }) => {
     const s = new SampleAppPage(page);
