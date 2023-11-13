@@ -1,20 +1,20 @@
 import { test } from "@playwright/test";
 
 const { SampleAppPage } = require("../models/sample-app.model");
+let username = process.env.USERNAME;
+let password = process.env.PASSWORD;
 
 test.describe.parallel("suite", () => {
   test("log in success", async ({ page }) => {
-    let username = "hahaha";
     const s = new SampleAppPage(page);
     await s.navigateToSampleApp();
     await s.fillUsernameField(username);
-    await s.fillPasswordField("pwd");
+    await s.fillPasswordField(password);
     await s.clickLoginButton();
     await s.expectedLoginTextToBe(`Welcome, ${username}!`);
   });
 
   test("wrong password", async ({ page }) => {
-    let username = "hahaha";
     const s = new SampleAppPage(page);
     await s.navigateToSampleApp();
     await s.fillUsernameField(username);
@@ -24,7 +24,7 @@ test.describe.parallel("suite", () => {
   });
 
   test("no username", async ({ page }) => {
-    let username = "";
+    username = "";
     const s = new SampleAppPage(page);
     await s.navigateToSampleApp();
     await s.fillUsernameField(username);
@@ -34,11 +34,10 @@ test.describe.parallel("suite", () => {
   });
 
   test("log out", async ({ page }) => {
-    let username = "hahaha";
     const s = new SampleAppPage(page);
     await s.navigateToSampleApp();
     await s.fillUsernameField(username);
-    await s.fillPasswordField("pwd");
+    await s.fillPasswordField(password);
     await s.clickLoginButton();
     await s.expectedLoginTextToBe(`Welcome, ${username}!`);
     await s.clickLogoutButton();
